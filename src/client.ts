@@ -63,7 +63,7 @@ export class ZennClient {
 
   constructor(options: ClientOptions = {}) {
     this.baseUrl = (options.baseUrl ?? DEFAULT_BASE_URL).replace(/\/+$/, "");
-    this.fetcher = options.fetch ?? fetch;
+    this.fetcher = options.fetch ?? fetch.bind(globalThis);
     this.headers = options.headers ?? {};
   }
 
